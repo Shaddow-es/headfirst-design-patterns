@@ -2,6 +2,7 @@ package es.shaddow.headfirst.designpatterns.observer;
 
 import es.shaddow.headfirst.designpatterns.observer.display.CurrentConditionsDisplay;
 import es.shaddow.headfirst.designpatterns.observer.display.ForecastDisplay;
+import es.shaddow.headfirst.designpatterns.observer.display.HeatIndexDisplay;
 import es.shaddow.headfirst.designpatterns.observer.display.StatisticsDisplay;
 import es.shaddow.headfirst.designpatterns.observer.model.WheatherData;
 
@@ -13,6 +14,7 @@ public class WeatherStation {
 		CurrentConditionsDisplay currentDisplay = new CurrentConditionsDisplay(wheaterData);
 		StatisticsDisplay statisticsDisplay = new StatisticsDisplay(wheaterData);
 		ForecastDisplay forecastDisplay = new ForecastDisplay(wheaterData);
+		HeatIndexDisplay heatIndexDisplay = new HeatIndexDisplay(wheaterData);
 
 		wheaterData.setMeasurements(80, 65, 30.4f);
 		wheaterData.setMeasurements(82, 70, 29.2f);
