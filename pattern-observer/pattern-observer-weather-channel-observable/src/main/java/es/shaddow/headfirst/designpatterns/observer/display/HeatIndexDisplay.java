@@ -1,11 +1,13 @@
 package es.shaddow.headfirst.designpatterns.observer.display;
 
-import es.shaddow.headfirst.designpatterns.observer.Observer;
+import java.util.Observable;
+import java.util.Observer;
+
 import es.shaddow.headfirst.designpatterns.observer.model.WeatherData;
 
 public class HeatIndexDisplay implements Observer, DisplayElement {
 
-	private WeatherData weatherData;
+	private Observable observable;
 
 	private float heatIndex;
 
@@ -13,19 +15,22 @@ public class HeatIndexDisplay implements Observer, DisplayElement {
 	// -- Constructores
 	// --------------------------------------------------------
 
-	public HeatIndexDisplay(WeatherData weatherData) {
+	public HeatIndexDisplay(Observable observable) {
 		super();
-		this.weatherData = weatherData;
-		this.weatherData.registerObserver(this);
+		this.observable = observable;
+		this.observable.addObserver(this);
 	}
 
 	// --------------------------------------------------------
 	// -- Implementación Interfaz Observer
 	// --------------------------------------------------------
 
-	public void update(float temperature, float humidity, float pressure) {
-		heatIndex = computeHeatIndex(temperature, humidity);
-		display();
+	public void update(Observable observable, Object data) {
+		if (observable instanceof WeatherData) {
+			WeatherData weatherData = (WeatherData) observable;
+			heatIndex = computeHeatIndex(weatherData.getTemperature(), weatherData.getHumidity());
+			display();
+		}
 	}
 
 	// --------------------------------------------------------

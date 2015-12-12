@@ -1,11 +1,13 @@
 package es.shaddow.headfirst.designpatterns.observer.display;
 
-import es.shaddow.headfirst.designpatterns.observer.Observer;
+import java.util.Observable;
+import java.util.Observer;
+
 import es.shaddow.headfirst.designpatterns.observer.model.WeatherData;
 
 public class CurrentConditionsDisplay implements Observer, DisplayElement {
 
-	private WeatherData weaterData;
+	private Observable observable;
 
 	private float temperature;
 	private float humidity;
@@ -14,20 +16,24 @@ public class CurrentConditionsDisplay implements Observer, DisplayElement {
 	// -- Constructores
 	// --------------------------------------------------------
 
-	public CurrentConditionsDisplay(WeatherData weatherData) {
+	public CurrentConditionsDisplay(Observable observable) {
 		super();
-		this.weaterData = weatherData;
-		this.weaterData.registerObserver(this);
+		this.observable = observable;
+		this.observable.addObserver(this);
 	}
 
 	// --------------------------------------------------------
 	// -- Implementación Interfaz Observer
 	// --------------------------------------------------------
 
-	public void update(float temperature, float humidity, float pressure) {
-		this.temperature = temperature;
-		this.humidity = humidity;
-		display();
+	public void update(Observable observable, Object data) {
+		if (observable instanceof WeatherData) {
+			WeatherData weatherData = (WeatherData) observable;
+			temperature = weatherData.getTemperature();
+			humidity = weatherData.getHumidity();
+			display();
+		}
+
 	}
 
 	// --------------------------------------------------------
