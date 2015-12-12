@@ -6,7 +6,7 @@ import java.util.List;
 import es.shaddow.headfirst.designpatterns.observer.Observer;
 import es.shaddow.headfirst.designpatterns.observer.Subject;
 
-public class WheatherData implements Subject {
+public class WeatherData implements Subject {
 
 	private List<Observer> observers;
 
@@ -18,7 +18,7 @@ public class WheatherData implements Subject {
 	// -- Constructores
 	// --------------------------------------------------------
 
-	public WheatherData() {
+	public WeatherData() {
 		super();
 		observers = new ArrayList<Observer>();
 	}

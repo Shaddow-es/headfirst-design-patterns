@@ -1,14 +1,14 @@
 package es.shaddow.headfirst.designpatterns.observer.display;
 
 import es.shaddow.headfirst.designpatterns.observer.Observer;
-import es.shaddow.headfirst.designpatterns.observer.model.WheatherData;
+import es.shaddow.headfirst.designpatterns.observer.model.WeatherData;
 
 public class StatisticsDisplay implements Observer, DisplayElement {
 
-	private WheatherData wheaterData;
+	private WeatherData weatherData;
 
 	private float minTemp = Float.MAX_VALUE;
-	private float maxTemp= Float.MIN_VALUE;
+	private float maxTemp = Float.MIN_VALUE;
 	private float tempSum;
 	private int numReadings;
 
@@ -16,10 +16,10 @@ public class StatisticsDisplay implements Observer, DisplayElement {
 	// -- Constructores
 	// --------------------------------------------------------
 
-	public StatisticsDisplay(WheatherData wheaterData) {
+	public StatisticsDisplay(WeatherData weatherData) {
 		super();
-		this.wheaterData = wheaterData;
-		this.wheaterData.registerObserver(this);
+		this.weatherData = weatherData;
+		this.weatherData.registerObserver(this);
 	}
 
 	// --------------------------------------------------------

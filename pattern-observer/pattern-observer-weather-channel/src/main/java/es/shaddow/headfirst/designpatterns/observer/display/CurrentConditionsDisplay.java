@@ -1,11 +1,11 @@
 package es.shaddow.headfirst.designpatterns.observer.display;
 
 import es.shaddow.headfirst.designpatterns.observer.Observer;
-import es.shaddow.headfirst.designpatterns.observer.model.WheatherData;
+import es.shaddow.headfirst.designpatterns.observer.model.WeatherData;
 
 public class CurrentConditionsDisplay implements Observer, DisplayElement {
 
-	private WheatherData wheaterData;
+	private WeatherData weaterData;
 
 	private float temperature;
 	private float humidity;
@@ -14,10 +14,10 @@ public class CurrentConditionsDisplay implements Observer, DisplayElement {
 	// -- Constructores
 	// --------------------------------------------------------
 
-	public CurrentConditionsDisplay(WheatherData wheaterData) {
+	public CurrentConditionsDisplay(WeatherData weatherData) {
 		super();
-		this.wheaterData = wheaterData;
-		this.wheaterData.registerObserver(this);
+		this.weaterData = weatherData;
+		this.weaterData.registerObserver(this);
 	}
 
 	// --------------------------------------------------------
