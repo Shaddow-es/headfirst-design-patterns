@@ -28,7 +28,7 @@ public class WheatherData implements Subject {
 	// --------------------------------------------------------
 
 	public void measurementsChanged() {
-		nofityObservers();
+		notifyObservers();
 	}
 
 	public void setMeasurements(float temperature, float humidity, float pressure) {
@@ -50,7 +50,7 @@ public class WheatherData implements Subject {
 		observers.remove(observer);
 	}
 
-	public void nofityObservers() {
+	public void notifyObservers() {
 		for (Observer observer : observers) {
 			observer.update(temperature, humidity, pressure);
 		}
